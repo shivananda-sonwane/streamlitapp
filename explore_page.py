@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 def shorten_categories(categories, cutoff):
     categorical_map = {}
     for i in range(len(categories)):
@@ -29,7 +28,6 @@ def clean_education(x):
     if 'Professional degree' in x or 'Other doctoral' in x:
         return 'Post grad'
     return 'Less than a Bachelors'
-
 
 
 @st.cache
@@ -63,10 +61,10 @@ def show_explore_page():
     """
     )
 
-    data = data["Country"].value_counts()
+    data1 = df["Country"].value_counts()
 
     fig1, ax1 = plt.subplots()
-    ax1.pie(data, labels=data.index, autopct="%1.1f%%", shadow=True, startangle=90)
+    ax1.pie(data1, labels=data1.index, autopct="%1.1f%%", shadow=True, startangle=90)
     ax1.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
 
     st.write("""#### Number of Data from different countries""")
@@ -79,8 +77,8 @@ def show_explore_page():
     """
     )
 
-    data = data.groupby(["Country"])["Salary"].mean().sort_values(ascending=True)
-    st.bar_chart(data)
+    data1 = data.groupby(["Country"])["Salary"].mean().sort_values(ascending=True)
+    st.bar_chart(data1)
 
     st.write(
         """
@@ -88,6 +86,6 @@ def show_explore_page():
     """
     )
 
-    data = data.groupby(["YearsCodePro"])["Salary"].mean().sort_values(ascending=True)
-    st.line_chart(data)
+    data1 = data.groupby(["YearsCodePro"])["Salary"].mean().sort_values(ascending=True)
+    st.line_chart(data1)
 
