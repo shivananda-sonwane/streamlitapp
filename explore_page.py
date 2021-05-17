@@ -61,7 +61,7 @@ def show_explore_page():
     """
     )
 
-    data1 = df["Country"].value_counts()
+    data1 = data["Country"].value_counts()
 
     fig1, ax1 = plt.subplots()
     ax1.pie(data1, labels=data1.index, autopct="%1.1f%%", shadow=True, startangle=90)
